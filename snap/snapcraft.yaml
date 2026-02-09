@@ -15,7 +15,7 @@ source-code: https://github.com/qdm12/ddns-updater
 donation: https://github.com/sponsors/qdm12
 issues: https://github.com/jeandudey/snap-ddns-updater/issues
 contact: me@jeandudey.tech
-grade: devel
+grade: stable
 confinement: strict
 
 platforms:
