@@ -13,9 +13,7 @@ license: MIT
 website: https://github.com/qdm12/ddns-updater
 source-code: https://github.com/qdm12/ddns-updater
 donation: https://github.com/sponsors/qdm12
-issues:
-  - https://github.com/jeandudey/snap-ddns-updater/issues
-  - me@jeandudey.tech
+issues: https://github.com/jeandudey/snap-ddns-updater/issues
 contact: me@jeandudey.tech
 grade: devel
 confinement: strict
