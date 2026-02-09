@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (C) 2026 Jean-Pierre De Jesus DIAZ <me@jeandudey.tech
+# Copyright (C) 2026 Jean-Pierre De Jesus DIAZ <me@jeandudey.tech>
 
 set -ex
 
@@ -13,24 +13,24 @@ export BACKUP_DIRECTORY="$SNAP_DATA"
 export RESOLVER_ADDRESS=
 export RESOLVER_TIMEOUT=5s
 
-export PERIOD=$(period)
-export UPDATE_COOLDOWN_PERIOD=$(update_cooldown_period)
-export HTTP_TIMEOUT=$(http_timeout)
+export PERIOD="$(period)"
+export UPDATE_COOLDOWN_PERIOD="$(update_cooldown_period)"
+export HTTP_TIMEOUT="$(http_timeout)"
 
-export PUBLICIP_FETCHERS=$(publicip_fetchers)
-export PUBLICIP_HTTP_PROVIDERS=$(publicip_http_providers)
-export PUBLICIP_DNS_PROVIDERS=$(publicip_dns_providers)
-export PUBLICIP_DNS_TIMEOUT=$(publicip_dns_timeout)
-export PUBLICIPV4_HTTP_PROVIDERS=$(publicip_ipv4_http_providers)
-export PUBLICIPV6_HTTP_PROVIDERS=$(publicip_ipv6_http_providers)
+export PUBLICIP_FETCHERS="$(publicip_fetchers)"
+export PUBLICIP_HTTP_PROVIDERS="$(publicip_http_providers)"
+export PUBLICIP_DNS_PROVIDERS="$(publicip_dns_providers)"
+export PUBLICIP_DNS_TIMEOUT="$(publicip_dns_timeout)"
+export PUBLICIPV4_HTTP_PROVIDERS="$(publicip_ipv4_http_providers)"
+export PUBLICIPV6_HTTP_PROVIDERS="$(publicip_ipv6_http_providers)"
 
-export SERVER_ENABLED=$(server_enabled)
-export LISTENING_ADDRESS=$(server_listening_address)
-export ROOT_URL=$(server_root_url)
+export SERVER_ENABLED="$(server_enabled)"
+export LISTENING_ADDRESS="$(server_listening_address)"
+export ROOT_URL="$(server_root_url)"
 
-export BACKUP_PERIOD=$(backup_period)
+export BACKUP_PERIOD="$(backup_period)"
 
-export LOG_LEVEL=$(log_level)
-export LOG_CALLER=$(log_caller)
+export LOG_LEVEL="$(log_level)"
+export LOG_CALLER="$(log_caller)"
 
-"$SNAP"/bin/ddns-updater
+exec "$SNAP"/bin/ddns-updater

@@ -1,3 +1,5 @@
 #!/bin/sh -e
 
-snapctl restart "${SNAP_INSTANCE_NAME}.ddns-updater"
+if snapctl services "${SNAP_INSTANCE_NAME}.ddns-updater" | grep -q ' active'; then
+    snapctl restart "${SNAP_INSTANCE_NAME}.ddns-updater"
+fi
