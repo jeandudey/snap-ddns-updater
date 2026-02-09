@@ -1,0 +1,68 @@
+name: ddns-updater
+title: DDNS Updater
+base: core24
+version: '2.9.0'
+summary: Auto-update DNS A/AAAA records based on your current external IP
+description: |
+  The ddns-updater program automatically detects your external IPv4/IPv6
+  address and updates DNS A and AAAA records to match, supporting multiple DNS
+  providers.
+
+  This snap is not endorsed by the ddns-updater project.
+license: MIT
+website: https://github.com/qdm12/ddns-updater
+source-code: https://github.com/qdm12/ddns-updater
+donation: https://github.com/sponsors/qdm12
+issues:
+  - https://github.com/jeandudey/snap-ddns-updater/issues
+  - me@jeandudey.tech
+contact: me@jeandudey.tech
+grade: devel
+confinement: strict
+
+platforms:
+  amd64:
+  arm64:
+
+apps:
+  ddns-updater:
+    daemon: simple
+    install-mode: disable
+    refresh-mode: endure
+    restart-condition: on-failure
+    command: bin/ddns-updater-wrapper
+    plugs:
+      - network
+      - network-bind
+
+parts:
+  ddns-updater:
+    plugin: go
+    source-type: git
+    source-tag: v2.9.0
+    source: https://github.com/qdm12/ddns-updater
+    build-snaps:
+      - go/1.25/stable
+    # The date is not set deliberately.
+    override-build: |
+      VERSION=2.9.0
+      COMMIT=$(git rev-parse --short HEAD)
+
+      go build \
+        -ldflags="-X 'main.version=$VERSION' -X 'main.commit=$COMMIT'" \
+        -o $CRAFT_PART_INSTALL/bin/ddns-updater \
+        ./cmd/ddns-updater
+
+  hooks:
+    plugin: dump
+    source: src/hooks/
+    organize:
+      bin/: snap/hooks/
+
+  wrapper:
+    plugin: dump
+    source: src/ddns-updater
+
+  utilities:
+    plugin: dump
+    source: src/utilities

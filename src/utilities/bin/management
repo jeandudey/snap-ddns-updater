@@ -1,0 +1,186 @@
+#!/bin/sh
+
+DEFAULT_PERIOD=5m
+DEFAULT_UPDATE_COOLDOWN_PERIOD=5m
+DEFAULT_HTTP_TIMEOUT=10s
+
+DEFAULT_PUBLICIP_FETCHERS=all
+DEFAULT_PUBLICIP_HTTP_PROVIDERS=all
+DEFAULT_PUBLICIP_DNS_PROVIDERS=all
+DEFAULT_PUBLICIP_DNS_TIMEOUT=3s
+DEFAULT_PUBLICIP_IPV4_HTTP_PROVIDERS=all
+DEFAULT_PUBLICIP_IPV6_HTTP_PROVIDERS=all
+
+DEFAULT_SERVER_ENABLED=yes
+DEFAULT_SERVER_LISTENING_ADDRESS=:8000
+DEFAULT_SERVER_ROOT_URL=/
+
+DEFAULT_BACKUP_PERIOD=0
+
+DEFAULT_LOG_LEVEL=info
+DEFAULT_LOG_CALLER=hidden
+
+period()
+{
+    value=$(snapctl get period)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_PERIOD"
+		snapctl set period="$value"
+	fi
+
+	echo "$value"
+}
+
+update_cooldown_period()
+{
+    value=$(snapctl get update-cooldown-period)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_UPDATE_COOLDOWN_PERIOD"
+		snapctl set update-cooldown-period="$value"
+	fi
+
+	echo "$value"
+}
+
+http_timeout()
+{
+    value=$(snapctl get http-timeout)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_HTTP_TIMEOUT"
+		snapctl set http-timeout="$value"
+	fi
+
+	echo "$value"
+}
+
+publicip_fetchers()
+{
+    value=$(snapctl get public-ip.fetchers)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_PUBLICIP_FETCHERS"
+		snapctl set public-ip.fetchers="$value"
+	fi
+
+	echo "$value"
+}
+
+publicip_http_providers()
+{
+    value=$(snapctl get public-ip.http.providers)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_PUBLICIP_HTTP_PROVIDERS"
+		snapctl set public-ip.http.providers="$value"
+	fi
+
+	echo "$value"
+}
+
+publicip_dns_providers()
+{
+    value=$(snapctl get public-ip.dns.providers)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_PUBLICIP_DNS_PROVIDERS"
+		snapctl set public-ip.dns.providers="$value"
+	fi
+
+	echo "$value"
+}
+
+publicip_dns_timeout()
+{
+    value=$(snapctl get public-ip.dns.timeout)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_PUBLICIP_DNS_TIMEOUT"
+		snapctl set public-ip.dns.timeout="$value"
+	fi
+
+	echo "$value"
+}
+
+publicip_ipv4_http_providers()
+{
+    value=$(snapctl get public-ip.ipv4.http.providers)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_PUBLICIP_IPV4_HTTP_PROVIDERS"
+		snapctl set public-ip.ipv4.http.providers="$value"
+	fi
+
+	echo "$value"
+}
+
+publicip_ipv6_http_providers()
+{
+    value=$(snapctl get public-ip.ipv6.http.providers)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_PUBLICIP_IPV6_HTTP_PROVIDERS"
+		snapctl set public-ip.ipv6.http.providers="$value"
+	fi
+
+	echo "$value"
+}
+
+server_enabled()
+{
+    value=$(snapctl get server.enabled)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_SERVER_ENABLED"
+		snapctl set server.enabled="$value"
+	fi
+
+	echo "$value"
+}
+
+server_listening_address()
+{
+    value=$(snapctl get server.listening-address)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_SERVER_LISTENING_ADDRESS"
+		snapctl set server.listening-address="$value"
+	fi
+
+	echo "$value"
+}
+
+server_root_url()
+{
+    value=$(snapctl get server.root-url)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_SERVER_ROOT_URL"
+		snapctl set server.root-url="$value"
+	fi
+
+	echo "$value"
+}
+
+backup_period()
+{
+    value=$(snapctl get backup.period)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_BACKUP_PERIOD"
+		snapctl set backup.period="$value"
+	fi
+
+	echo "$value"
+}
+
+log_level()
+{
+    value=$(snapctl get log.level)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_LOG_LEVEL"
+		snapctl set log.level="$value"
+	fi
+
+	echo "$value"
+}
+
+log_caller()
+{
+    value=$(snapctl get log.caller)
+   	if [ -z "$value" ]; then
+		value="$DEFAULT_LOG_CALLER"
+		snapctl set log.caller="$value"
+	fi
+
+	echo "$value"
+}
