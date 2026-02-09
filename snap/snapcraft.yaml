@@ -1,4 +1,4 @@
-name: ddns-updater
+name: jeandudey-ddns-updater
 title: DDNS Updater
 base: core24
 version: '2.9.0'

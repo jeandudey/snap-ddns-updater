@@ -1,5 +1,5 @@
 parts
 stage
 prime
-ddns-updater*.snap
+jeandudey-ddns-updater*.snap
 snap/.snapcraft
