@@ -1,6 +1,6 @@
 name: jeandudey-ddns-updater
 title: DDNS Updater
-base: core24
+base: core26
 version: '2.9.0'
 summary: Auto-update DNS A/AAAA records based on your current external IP
 description: |
@@ -40,10 +40,10 @@ parts:
     source-tag: v2.9.0
     source: https://github.com/qdm12/ddns-updater
     build-snaps:
-      - go/1.25/stable
+      - go/1.26/stable
     # The date is not set deliberately.
     override-build: |
-      VERSION=2.9.0
+      VERSION=$SNAPCRAFT_PROJECT_VERSION
       COMMIT=$(git rev-parse --short HEAD)
 
       go build \
