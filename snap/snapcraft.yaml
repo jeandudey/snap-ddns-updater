@@ -1,7 +1,7 @@
 name: jeandudey-ddns-updater
 title: DDNS Updater
 base: core26
-version: "2.9.0"
+version: "2.10.0"
 summary: Auto-update DNS A/AAAA records based on your current external IP
 description: |
   The ddns-updater program automatically detects your external IPv4/IPv6
@@ -37,7 +37,7 @@ parts:
   ddns-updater:
     plugin: go
     source-type: git
-    source-tag: "v2.9.0"
+    source-tag: "v2.10.0"
     source: https://github.com/qdm12/ddns-updater
     build-snaps:
       - go/1.26/stable
