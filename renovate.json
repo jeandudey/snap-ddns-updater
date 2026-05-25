@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "baseBranches": ["main"],
+  "schedule": ["before 9am on monday"],
+  "timezone": "Europe/Madrid",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^snap/snapcraft\\.yaml$"],
+      "matchStrings": [
+        "version:\\s*['\"]?(?<currentValue>\\d+\\.\\d+\\.\\d+)['\"]?",
+        "source-tag:\\s*['\"]?v(?<currentValue>\\d+\\.\\d+\\.\\d+)['\"]?"
+      ],
+      "datasourceTemplate": "github-tags",
+      "packageNameTemplate": "qdm12/ddns-updater"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "DDNS-Updater source tag",
+      "matchDatasources": ["github-tags"],
+      "matchPackageNames": ["^qdm12/ddns-updater$"],
+      "automerge": false,
+      "minimumReleaseAge": "2 days"
+    }
+  ]
+}
